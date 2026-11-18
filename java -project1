@@ -1,0 +1,38 @@
+
+#!/bin/bash
+
+echo "=================================="
+echo " Starting Java Application Build "
+echo "=================================="
+
+# Step 1: Check Java version
+echo "Checking Java version..."
+java -version
+
+# Step 2: Check Maven version
+echo "Checking Maven version..."
+mvn -version
+
+# Step 3: Clean previous build
+echo "Cleaning previous build..."
+mvn clean
+
+# Step 4: Compile Java code
+echo "Compiling Java code..."
+mvn compile
+
+# Step 5: Run unit tests
+echo "Running unit tests..."
+mvn test
+
+# Step 6: Package application
+echo "Packaging Java application..."
+mvn package -DskipTests=false
+
+# Step 7: Display generated artifact
+echo "Generated JAR/WAR files:"
+ls -lh target/*.jar target/*.war 2>/dev/null || true
+
+echo "=================================="
+echo " Java Build Completed Successfully"
+echo "=================================="
